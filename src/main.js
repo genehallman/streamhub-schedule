@@ -93,10 +93,16 @@ var ScheduleView = Backbone.View.extend(
 	            .append(descContainer);
 	            
 	        self.$el.append(eventContainer);
+	        eventContainer.click(self.clickHandler);
 	    });
 	    this.$el.show();
     }
 });
+
+ScheduleView.prototype.clickHandler = function(clickEvent) {
+    var a = $(clickEvent.currentTarget);
+    console.log(a);
+};
 
 return ScheduleView;
 });

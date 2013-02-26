@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StreamHub Backbone Example</title>
+    <script src="lib/requirejs/require.js"
+    		data-main="requirejs.conf"
+            type="text/javascript"></script>
+    <script src="http://zor.t402.livefyre.com/wjs/v3.0.sdk/javascripts/livefyre.js"></script>
+    <link rel="stylesheet" type="text/css" href="example.css">
+</head>
+<body>
+  <div id="container">
+    <h1>StreamHub Schedule</h1>
+
+    <div id="schedule-wrapper">
+        <div id="example"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+	// Now to load the example
+	require(['example.js'], function(example) {
+        example(null, {elementId: 'example'});
+	});
+  </script>
+</body>
+</html>
