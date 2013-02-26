@@ -30,6 +30,14 @@ var ScheduleView = Backbone.View.extend(
 	 * Renders this ScheduleView, as a horizontal schedule.
 	 */
     render: function () {
+	    if (!this.collection || this.collection.length <= 0) {
+	       return;
+	    }
+
+		this.collection.sort(function(a, b) { 
+		    return a.start_date - b.start_date;
+		});
+
 	    var elWidth = this.$el.width();
 	    var elTimeRange = this.end_date - this.start_date;
 	    var rows = [this.start_date];

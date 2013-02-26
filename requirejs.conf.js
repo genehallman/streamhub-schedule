@@ -9,7 +9,6 @@ require.config({
     'jasmine-html': 'lib/jasmine/lib/jasmine-core/jasmine-html',
     'jasmine-jquery': 'lib/jasmine-jquery/lib/jasmine-jquery',
     fyre: 'http://zor.t402.livefyre.com/wjs/v3.0/javascripts/livefyre'
-    
   },
   packages: [{
     name: 'streamhub-backbone',
