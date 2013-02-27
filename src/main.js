@@ -35,7 +35,7 @@ var ScheduleView = Backbone.View.extend(
 	    }
 
 		this.collection.sort(function(a, b) { 
-		    return a.start_date - b.start_date;
+		    return new Date(a.fields.start_date) - new Date(b.fields.start_date);
 		});
 
 	    var elWidth = this.$el.width();

@@ -85,6 +85,19 @@ describe('A ScheduleView', function () {
             expect($('#hub-ScheduleView div#scheduled_event_1003').hasClass('event-row1')).toBe(true);
             expect($('#hub-ScheduleView div#scheduled_event_1004').hasClass('event-row1')).toBe(true);
         });
+        it ("should sort an unsorted set, and render 4 items (2 rows)", function () {
+            view = new ScheduleView({
+                el: $('#hub-ScheduleView'),
+                collection: MockHubCollectionFactory.unsortedMultiRowSet(),
+                start_date: new Date(2013, 2, 26, 10),
+                end_date: new Date(2013, 2, 27, 0)
+            });
+            expect($('#hub-ScheduleView').children().length).toBe(4);
+            expect($('#hub-ScheduleView div#scheduled_event_1001').hasClass('event-row0')).toBe(true);
+            expect($('#hub-ScheduleView div#scheduled_event_1002').hasClass('event-row0')).toBe(true);
+            expect($('#hub-ScheduleView div#scheduled_event_1003').hasClass('event-row1')).toBe(true);
+            expect($('#hub-ScheduleView div#scheduled_event_1004').hasClass('event-row1')).toBe(true);
+        });
     });
 }); 
 });
