@@ -9,6 +9,7 @@ var Backbone = require('backbone');
  * @param {Object.<string, *>} opts No options.
  */
 var ScheduleView = Backbone.View.extend(
+/** @lends ScheduleView.prototype */
 {
     initialize: function (opts) {
     	opts = opts || {};
@@ -16,12 +17,13 @@ var ScheduleView = Backbone.View.extend(
         this.$el.hide();
         this.start_date = opts.start_date;
         this.end_date = opts.end_date;
+        this.click = opts.click || null;
         this.render();
     },
     
     /**
-     * @property {string} className The css class name that this object will apply to
-     * it's holding element
+     * The css class name that this object will apply to it's holding element
+     * @type {string} 
      * @default hub-ScheduleView
      */    
     className: "hub-ScheduleView",
@@ -75,6 +77,7 @@ var ScheduleView = Backbone.View.extend(
 	            .addClass('event')
 	            .addClass('event-row' + eventRow)
 	            .attr('id', 'scheduled_event_' + event.pk)
+	            .attr('data-conv-id', event.fields.conv_id)
 	            .attr('data-start-date', event.start_date)
 	            .attr('data-end-date', event.end_date)
 	            .css('left', eventLeft + 'px')
@@ -93,16 +96,14 @@ var ScheduleView = Backbone.View.extend(
 	            .append(descContainer);
 	            
 	        self.$el.append(eventContainer);
-	        eventContainer.click(self.clickHandler);
+	        
+	        if (self.click) {
+	           eventContainer.click(self.click, self);
+	        }
 	    });
 	    this.$el.show();
     }
 });
-
-ScheduleView.prototype.clickHandler = function(clickEvent) {
-    var a = $(clickEvent.currentTarget);
-    console.log(a);
-};
 
 return ScheduleView;
 });
