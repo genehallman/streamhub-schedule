@@ -98,7 +98,7 @@ var ScheduleView = Backbone.View.extend(
 	        self.$el.append(eventContainer);
 	        
 	        if (self.click) {
-	           eventContainer.click(self.click, self);
+	           eventContainer.click(self.click);
 	        }
 	    });
 	    this.$el.show();
