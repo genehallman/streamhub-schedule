@@ -77,7 +77,7 @@ var ScheduleView = Backbone.View.extend(
 	            .addClass('event')
 	            .addClass('event-row' + eventRow)
 	            .attr('id', 'scheduled_event_' + event.pk)
-	            .attr('data-conv-id', event.fields.conv_id)
+	            .attr('data-conv-id', event.fields.article_id)
 	            .attr('data-start-date', event.start_date)
 	            .attr('data-end-date', event.end_date)
 	            .css('left', eventLeft + 'px')
