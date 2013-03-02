@@ -57,8 +57,10 @@ var ScheduleView = Backbone.View.extend(
 	        }
 	        var eventContainer = $(document.createElement('div'));
 	        var titleContainer = $(document.createElement('div'));
+	        var datetimeContainer = $(document.createElement('div'));
 	        var descContainer = $(document.createElement('div'));
 	        
+	        // choose row based on position
 	        var eventLeft = ((event.start_date - self.start_date) / elTimeRange) * elWidth;
 	        var eventWidth = (((event.end_date - self.start_date) / elTimeRange) * elWidth) - eventLeft;
 	        var eventRow = -1;
@@ -73,6 +75,14 @@ var ScheduleView = Backbone.View.extend(
 	        }
 	        rows[eventRow] = event.end_date;
 	        
+           var datetimeHtml = 
+               (((event.start_date.getHours() - 1) % 12)+1) + ":" + 
+               (event.start_date.getMinutes() > 10 ? event.start_date.getMinutes() : "0" + event.start_date.getMinutes()) +  
+               (event.start_date.getHours() >= 12 ? "pm" : "am") + " - " +
+               (((event.end_date.getHours() - 1) % 12)+1) + ":" +
+               (event.end_date.getMinutes() > 10 ? event.end_date.getMinutes() : "0" + event.end_date.getMinutes()) +
+               (event.end_date.getHours() >= 12 ? "pm" : "am");
+	        
 	        eventContainer
 	            .addClass('event')
 	            .addClass('event-row' + eventRow)
@@ -86,6 +96,10 @@ var ScheduleView = Backbone.View.extend(
 	        titleContainer
 	            .addClass('event-title')
 	            .html(event.fields.title);
+
+            datetimeContainer
+                .addClass('event-datetime')
+                .html(datetimeHtml);
 	
 	        descContainer
 	            .addClass('event-desc')
@@ -93,6 +107,7 @@ var ScheduleView = Backbone.View.extend(
 	        
 	        eventContainer
 	            .append(titleContainer)
+	            .append(datetimeContainer)
 	            .append(descContainer);
 	            
 	        self.$el.append(eventContainer);
