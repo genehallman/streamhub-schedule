@@ -49,8 +49,10 @@ var ScheduleView = Backbone.View.extend(
 	    var self = this;
 	    
 	    this.collection.forEach(function(event) {
-	        event.start_date = new Date(event.fields.start_date);
-	        event.end_date = new Date(event.fields.end_date); 
+            var startDateParts = event.fields.start_date.split(/[^0-9]/);
+            var endDateParts = event.fields.end_date.split(/[^0-9]/);
+            event.start_date = new Date(startDateParts[0], startDateParts[1]-1, startDateParts[2], startDateParts[3], startDateParts[4], startDateParts[5]);
+            event.end_date = new Date(endDateParts[0], endDateParts[1]-1, endDateParts[2], endDateParts[3], endDateParts[4], endDateParts[5]);
 	
 	        if (event.end_date < self.start_date || event.start_date > self.end_date) {
 	            return;
