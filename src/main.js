@@ -36,8 +36,13 @@ var ScheduleView = Backbone.View.extend(
 	       return;
 	    }
 
-		this.collection.sort(function(a, b) { 
-		    return new Date(a.fields.start_date) - new Date(b.fields.start_date);
+		this.collection.sort(function(a, b) {
+		  if (a && a.fields.sort_order && b && b.fields.sort_order
+		    && a.fields.start_date == b.fields.start_date) {
+		      return a.fields.sort_order - b.fields.sort_order;
+		  } else {
+		      return new Date(a.fields.start_date) - new Date(b.fields.start_date);
+		  }
 		});
 
 	    var elWidth = this.$el.width();
