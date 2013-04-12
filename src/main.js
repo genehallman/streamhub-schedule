@@ -1,42 +1,39 @@
 /** @module ScheduleView */
 define(function(require) {
-var Backbone = require('backbone');
-
-/**
- * ScheduleView creates a schedule from a set of events
- * @alias module:ScheduleView
- * @constructor
- * @param {Object.<string, *>} opts No options.
- */
-var ScheduleView = Backbone.View.extend(
-/** @lends ScheduleView.prototype */
-{
-    initialize: function (opts) {
+	var View = require('streamhub-sdk/view');
+	
+	/**
+	 * ScheduleView creates a schedule from a set of events
+	 * @alias module:ScheduleView
+	 * @constructor
+	 * @param {Object.<string, *>} opts Options to configure this view with.
+	 * @param {Array.<Object>} opts.data The data to show for this view.
+     * @param {string} opts.className The css class name that this object will apply to it's
+     *        holding element (defaults to "hub-ScheduleView").
+	 */
+	var ScheduleView = function (opts) {
     	opts = opts || {};
-        this.$el.addClass(this.className);
+    	View.call(this, opts);
+    	this.$el = $(this.el);
+        this.$el.addClass(opts.className || "hub-ScheduleView");
         this.$el.hide();
         this.start_date = opts.start_date;
         this.end_date = opts.end_date;
         this.click = opts.click || null;
+        this.data = opts.data;
+        
         this.render();
-    },
-    
-    /**
-     * The css class name that this object will apply to it's holding element
-     * @type {string} 
-     * @default hub-ScheduleView
-     */    
-    className: "hub-ScheduleView",
+    };
+    $.extend(ScheduleView.prototype, View.prototype);
     
     /**
 	 * Renders this ScheduleView, as a horizontal schedule.
 	 */
-    render: function () {
-	    if (!this.collection || this.collection.length <= 0) {
+    ScheduleView.prototype.render = function () {
+	    if (!this.data || this.data.length <= 0) {
 	       return;
 	    }
-
-		this.collection.sort(function(a, b) {
+		this.data.sort(function(a, b) {
 		  if (a && a.fields.sort_order && b && b.fields.sort_order
 		    && a.fields.start_date == b.fields.start_date) {
 		      return a.fields.sort_order - b.fields.sort_order;
@@ -53,7 +50,7 @@ var ScheduleView = Backbone.View.extend(
 	
 	    var self = this;
 	    
-	    this.collection.forEach(function(event) {
+	    $.each(this.data, function(index, event) {
             var startDateParts = event.fields.start_date.split(/[^0-9]/);
             var endDateParts = event.fields.end_date.split(/[^0-9]/);
             event.start_date = new Date(startDateParts[0], startDateParts[1]-1, startDateParts[2], startDateParts[3], startDateParts[4], startDateParts[5]);
@@ -62,6 +59,7 @@ var ScheduleView = Backbone.View.extend(
 	        if (event.end_date < self.start_date || event.start_date > self.end_date) {
 	            return;
 	        }
+
 	        var eventContainer = $(document.createElement('div'));
 	        var titleContainer = $(document.createElement('div'));
 	        var datetimeContainer = $(document.createElement('div'));
@@ -124,8 +122,7 @@ var ScheduleView = Backbone.View.extend(
 	        }
 	    });
 	    this.$el.show();
-    }
-});
-
-return ScheduleView;
+    };
+	
+	return ScheduleView;
 });

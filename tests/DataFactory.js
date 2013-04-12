@@ -1,17 +1,17 @@
 define(function () {
 
-var MockHubCollectionFactory = {};
+var DataFactory = {};
 
-MockHubCollectionFactory.emptySet = function () {
+DataFactory.emptySet = function () {
     return [];
 };
 
-MockHubCollectionFactory.singleItemSet = function () {
+DataFactory.singleItemSet = function () {
     return [{
         pk: 1001,
         fields: {
-            start_date: new Date(2013, 2, 26, 12, 0),
-            end_date: new Date(2013, 2, 26, 14, 0),
+            start_date: "2013-03-26T12:00:00.00",
+            end_date: "2013-03-26T14:00:00.00",
             conv_id: 2001,
             title: "My title1",
             description: "My description1"
@@ -19,12 +19,12 @@ MockHubCollectionFactory.singleItemSet = function () {
     }];
 };
 
-MockHubCollectionFactory.singleRowSet = function () {
+DataFactory.singleRowSet = function () {
     return [{
         pk: 1001,
         fields: {
-            start_date: new Date(2013, 2, 26, 12, 0),
-            end_date: new Date(2013, 2, 26, 14, 0),
+            start_date: "2013-03-26T12:00:00.00",
+            end_date: "2013-03-26T14:00:00.00",
             conv_id: 2001,
             title: "My title1",
             description: "My description1"
@@ -32,8 +32,8 @@ MockHubCollectionFactory.singleRowSet = function () {
     },{
         pk: 1002,
         fields: {
-            start_date: new Date(2013, 2, 26, 14, 0),
-            end_date: new Date(2013, 2, 26, 16, 0),
+            start_date: "2013-03-26T14:00:00.00",
+            end_date: "2013-03-26T16:00:00.00",
             conv_id: 2002,
             title: "My title2",
             description: "My description2"
@@ -41,8 +41,8 @@ MockHubCollectionFactory.singleRowSet = function () {
     },{
         pk: 1003,
         fields: {
-            start_date: new Date(2013, 2, 26, 16, 0),
-            end_date: new Date(2013, 2, 26, 18, 0),
+            start_date: "2013-03-26T16:00:00.00",
+            end_date: "2013-03-26T18:00:00.00",
             conv_id: 2003,
             title: "My title3",
             description: "My description3"
@@ -50,8 +50,8 @@ MockHubCollectionFactory.singleRowSet = function () {
     },{
         pk: 1004,
         fields: {
-            start_date: new Date(2013, 2, 26, 18, 0),
-            end_date: new Date(2013, 2, 26, 20, 0),
+            start_date: "2013-03-26T18:00:00.00",
+            end_date: "2013-03-26T20:00:00.00",
             conv_id: 2004,
             title: "My title4",
             description: "My description4"
@@ -59,12 +59,12 @@ MockHubCollectionFactory.singleRowSet = function () {
     }];
 };
 
-MockHubCollectionFactory.multiRowSet = function () {
+DataFactory.multiRowSet = function () {
 return [{
         pk: 1001,
         fields: {
-            start_date: new Date(2013, 2, 26, 12, 0),
-            end_date: new Date(2013, 2, 26, 14, 0),
+            start_date: "2013-03-26T12:00:00.00",
+            end_date: "2013-03-26T14:00:00.00",
             conv_id: 2001,
             title: "My title1",
             description: "My description1"
@@ -72,8 +72,8 @@ return [{
     },{
         pk: 1002,
         fields: {
-            start_date: new Date(2013, 2, 26, 14, 0),
-            end_date: new Date(2013, 2, 26, 16, 0),
+            start_date: "2013-03-26T14:00:00.00",
+            end_date: "2013-03-26T16:00:00.00",
             conv_id: 2002,
             title: "My title2",
             description: "My description2"
@@ -81,8 +81,8 @@ return [{
     },{
         pk: 1003,
         fields: {
-            start_date: new Date(2013, 2, 26, 13, 0),
-            end_date: new Date(2013, 2, 26, 15, 0),
+            start_date: "2013-03-26T13:00:00.00",
+            end_date: "2013-03-26T15:00:00.00",
             conv_id: 2003,
             title: "My title3",
             description: "My description3"
@@ -90,8 +90,8 @@ return [{
     },{
         pk: 1004,
         fields: {
-            start_date: new Date(2013, 2, 26, 15, 0),
-            end_date: new Date(2013, 2, 26, 17, 0),
+            start_date: "2013-03-26T15:00:00.00",
+            end_date: "2013-03-26T17:00:00.00",
             conv_id: 2004,
             title: "My title4",
             description: "My description4"
@@ -99,12 +99,12 @@ return [{
     }];
 };
 
-MockHubCollectionFactory.unsortedMultiRowSet = function () {
+DataFactory.unsortedMultiRowSet = function () {
 return [{
         pk: 1001,
         fields: {
-            start_date: new Date(2013, 2, 26, 12, 0),
-            end_date: new Date(2013, 2, 26, 14, 0),
+            start_date: "2013-03-26T12:00:00.00",
+            end_date: "2013-03-26T14:00:00.00",
             conv_id: 2001,
             title: "My title1",
             description: "My description1"
@@ -112,8 +112,8 @@ return [{
     },{
         pk: 1002,
         fields: {
-            start_date: new Date(2013, 2, 26, 14, 0),
-            end_date: new Date(2013, 2, 26, 16, 0),
+            start_date: "2013-03-26T14:00:00.00",
+            end_date: "2013-03-26T16:00:00.00",
             conv_id: 2002,
             title: "My title2",
             description: "My description2"
@@ -121,8 +121,8 @@ return [{
     },{
         pk: 1003,
         fields: {
-            start_date: new Date(2013, 2, 26, 13, 0),
-            end_date: new Date(2013, 2, 26, 15, 0),
+            start_date: "2013-03-26T13:00:00.00",
+            end_date: "2013-03-26T15:00:00.00",
             conv_id: 2003,
             title: "My title3",
             description: "My description3"
@@ -130,8 +130,8 @@ return [{
     },{
         pk: 1004,
         fields: {
-            start_date: new Date(2013, 2, 26, 15, 0),
-            end_date: new Date(2013, 2, 26, 17, 0),
+            start_date: "2013-03-26T15:00:00.00",
+            end_date: "2013-03-26T17:00:00.00",
             conv_id: 2004,
             title: "My title4",
             description: "My description4"
@@ -140,5 +140,5 @@ return [{
         return Math.random() - 0.5;
     });
 };
-return MockHubCollectionFactory;
+return DataFactory;
 });

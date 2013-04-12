@@ -1,9 +1,9 @@
 define([
     'jasmine-jquery',
     'streamhub-schedule',
-    'streamhub-backbone',
-    '../MockEventCollectionFactory'],
-function (jasmine, ScheduleView, Hub, MockHubCollectionFactory) {
+    'streamhub-sdk',
+    '../DataFactory'],
+function (jasmine, ScheduleView, Hub, DataFactory) {
 describe('A ScheduleView', function () {
     it ("can have tests run", function () {
         expect(true).toBe(true);
@@ -40,7 +40,7 @@ describe('A ScheduleView', function () {
         it ("should render nothing with an empty set", function () {
             view = new ScheduleView({
                 el: $('#hub-ScheduleView'),
-                collection: MockHubCollectionFactory.emptySet(),
+                data: DataFactory.emptySet(),
                 start_date: new Date(2013, 2, 26, 10),
                 end_date: new Date(2013, 2, 27, 0)
             });
@@ -50,7 +50,7 @@ describe('A ScheduleView', function () {
         it ("should render 1 item with a single item set", function () {
             view = new ScheduleView({
                 el: $('#hub-ScheduleView'),
-                collection: MockHubCollectionFactory.singleItemSet(),
+                data: DataFactory.singleItemSet(),
                 start_date: new Date(2013, 2, 26, 10),
                 end_date: new Date(2013, 2, 27, 0)
             });
@@ -61,7 +61,7 @@ describe('A ScheduleView', function () {
         it ("should render 4 items (1 row) with a single row set", function () {
             view = new ScheduleView({
                 el: $('#hub-ScheduleView'),
-                collection: MockHubCollectionFactory.singleRowSet(),
+                data: DataFactory.singleRowSet(),
                 start_date: new Date(2013, 2, 26, 10),
                 end_date: new Date(2013, 2, 27, 0)
             });
@@ -75,7 +75,7 @@ describe('A ScheduleView', function () {
         it ("should render 4 items (2 rows) with a multi row set", function () {
             view = new ScheduleView({
                 el: $('#hub-ScheduleView'),
-                collection: MockHubCollectionFactory.multiRowSet(),
+                data: DataFactory.multiRowSet(),
                 start_date: new Date(2013, 2, 26, 10),
                 end_date: new Date(2013, 2, 27, 0)
             });
@@ -88,7 +88,7 @@ describe('A ScheduleView', function () {
         it ("should sort an unsorted set, and render 4 items (2 rows)", function () {
             view = new ScheduleView({
                 el: $('#hub-ScheduleView'),
-                collection: MockHubCollectionFactory.unsortedMultiRowSet(),
+                data: DataFactory.unsortedMultiRowSet(),
                 start_date: new Date(2013, 2, 26, 10),
                 end_date: new Date(2013, 2, 27, 0)
             });
