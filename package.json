@@ -17,6 +17,6 @@
     "start": "./node_modules/http-server/bin/http-server"
   },
   "streamhub": {
-    "sampleImage": "https://raw.github.com/genehallman/streamhub-schedule/master/sampleImage.png"
+    "sampleImages": ["https://raw.github.com/genehallman/streamhub-schedule/master/sampleImage.png"]
   }
 }
