@@ -1,6 +1,6 @@
 # streamhub-schedule
 
-Hosting a Conference of Live Event? Use streamhub-schedule to create a social schedule for each day's scheduled events. Use StreamHub to aggregate Content about each event so even non-attendees can follow along from home.
+Hosting a Conference or Live Event? Use streamhub-schedule to create a social schedule for each day's scheduled events. Use StreamHub to aggregate Content about each event so even non-attendees can follow along from home.
 
 ## Features
 
@@ -19,6 +19,6 @@ During the Conference, users could see the StreamHub Heat Index of any trending 
 
 ## Usage
 
-streamhub-schedule is an embeddable JavaScript application that runs in any HTML5-compatible browser, including mobile devices and tablets. The included Developer Documentation explains the API to instantiate a MediaWall and stream in Content from a StreamHub Collection.
+streamhub-schedule is an embeddable JavaScript application that runs in any HTML5-compatible browser, including mobile devices and tablets. The included Developer Documentation explains the API to instantiate a streamhub-schedule and display a set of events.
 
 StreamHub Apps require a [Livefyre StreamHub](http://www.livefyre.com/streamhub/) subscription to power Curation, Collection, Content storage, and real-time syndication. To inquire about subscribing to StreamHub, [contact](mailto:sales@livefyre.com) Livefyre.
