@@ -8,13 +8,13 @@
     "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v1.0.1"
   },
   "streamhub": {
-    "icon": "https://raw.github.com/genehallman/streamhub-scorecard/master/images/schedule-thumbbigHF-302x227.png",
-    "iconHover": "https://raw.github.com/genehallman/streamhub-scorecard/master/images/schedule-thumbbigLF-302x227.png",
-    "background": "https://raw.github.com/genehallman/streamhub-scorecard/master/images/appgallery-schedule-v2.jpg",
+    "icon": "https://raw.github.com/genehallman/streamhub-schedule/master/images/schedule-thumbbigHF-302x227.png",
+    "iconHover": "https://raw.github.com/genehallman/streamhub-schedule/master/images/schedule-thumbbigLF-302x227.png",
+    "background": "https://raw.github.com/genehallman/streamhub-schedule/master/images/appgallery-schedule-v2.jpg",
     "sampleImages": [
-      "https://raw.github.com/genehallman/streamhub-scorecard/master/images/schedule-thumbprev-700x525_1.png",
-      "https://raw.github.com/genehallman/streamhub-scorecard/master/images/schedule-thumbprev-700x525_2.png",
-      "https://raw.github.com/genehallman/streamhub-scorecard/master/images/schedule-thumbprev-700x525_3.png"
+      "https://raw.github.com/genehallman/streamhub-schedule/master/images/schedule-thumbprev-700x525_1.png",
+      "https://raw.github.com/genehallman/streamhub-schedule/master/images/schedule-thumbprev-700x525_2.png",
+      "https://raw.github.com/genehallman/streamhub-schedule/master/images/schedule-thumbprev-700x525_3.png"
     ]
   }
 }
