@@ -8,8 +8,6 @@ The quickest way to use streamhub-schedule is to use the built version hosted on
 
 ### Dependencies
 
-TODO: UPDATE THIS AFTER GENE MERGES CODE CHANGES AND APP GALLERY CAN BUILD THIS
-
 streamhub-schedule depends on [streamhub-sdk](https://github.com/livefyre/streamhub-sdk). Ensure it's been included in your page.
 
 	<script src="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.min.gz.js"></script>
