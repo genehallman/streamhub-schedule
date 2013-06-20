@@ -1,12 +1,10 @@
 /* Place your example css here */
 body {
     color: #222;
-    font: 14px sans-serif;
+    font: 12px sans-serif;
     line-height: 16px;
-    background-color: #eee;
 }
 #schedule-wrapper{
-    height:470px;
     width:960px;
     overflow-x:scroll;
     overflow-y:hidden;
@@ -16,30 +14,42 @@ body {
     position:relative;
     overflow:hidden;
     width:960px;
-    background-color:#ccc;
-    height:470px;
+    height:476px;
+    
+    background: #7db9e8; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #7db9e8 0%, #7db9e8 58%, #2290e5 98%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7db9e8), color-stop(58%,#7db9e8), color-stop(98%,#2290e5)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover, #7db9e8 0%,#7db9e8 58%,#2290e5 98%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover, #7db9e8 0%,#7db9e8 58%,#2290e5 98%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover, #7db9e8 0%,#7db9e8 58%,#2290e5 98%); /* IE10+ */
+	background: radial-gradient(ellipse at center, #7db9e8 0%,#7db9e8 58%,#2290e5 98%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#2290e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 div.event {
-    color:white;
+    color:#666;
     position:absolute;
-    border:2px solid #666;
-    background-color:#222;
+    border:1px solid white;
+    background-color:white;
+    background-color:rgba(255,255,255, 0.5);
     overflow:hidden;
+    height:151px;
 }
 div.event div.event-title {
     padding:5px;
+    font-weight:bold;
+    color:#3333cc;
 }
 div.event div.event-datetime {
     padding:1px 5px;
+    font-size:10px;
 }
 div.event div.event-desc {
     white-space:nowrap;
     padding:5px;
 }
-div.event.event-row1 {top:0px;}
-div.event.event-row0 {top:73px;}
-div.event.event-row2 {top:146px;}
-div.event.event-row3 {top:219px;}
-div.event.event-row4 {top:292px;}
-div.event.event-row5 {top:365px;}
-div.event.event-row6 {top:438px;}
+div.event.event-row1 {top:10px;}
+div.event.event-row0 {top:162px;}
+div.event.event-row2 {top:314px;}
+div.event.event-row3 {top:466px;}
+div.event.event-row4 {top:618px;}
+div.event.event-row5 {top:770px;}
