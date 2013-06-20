@@ -16,7 +16,7 @@ streamhub-schedule depends on [streamhub-sdk](https://github.com/livefyre/stream
 
 Include streamhub-schedule too.
 
-	<script src="http://cdn.livefyre.com/libs/apps/genehallman/streamhub-scorecard/v0.0.0-build.20/streamhub-wall.min.js"></script>
+	<script src="http://cdn.livefyre.com/libs/apps/genehallman/streamhub-schedule/v2.0.0-build.2/streamhub-schedule.min.js"></script>
 
 ### Usage
 
@@ -46,6 +46,8 @@ Example:
 
     var scheduleView = new ScheduleView({
         el: document.getElementById('schedule'),
+        start_date: new Date(2013, 2, 26, 11, 0),
+        end_date: new Date(2013, 2, 26, 20, 0),
         data: [{
             pk: 1001,
             fields: {
@@ -65,7 +67,7 @@ Example:
         }]
     });
 
-You now have a schedule! See this all in action on [this jsfiddle](http://jsfiddle.net/FxeaY/1/).
+You now have a schedule! See this all in action on [this jsfiddle](http://jsfiddle.net/FxeaY/2/).
 
 ## Local Development
 
