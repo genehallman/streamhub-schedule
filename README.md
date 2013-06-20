@@ -65,7 +65,7 @@ Example:
         }]
     });
 
-You now have a schedule! See this all in action on [this jsfiddle](http://jsfiddle.net/59sT9/).
+You now have a schedule! See this all in action on [this jsfiddle](http://jsfiddle.net/FxeaY/1/).
 
 ## Local Development
 
