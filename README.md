@@ -1,110 +1,93 @@
 # streamhub-schedule
 
-streamhub-schedule is a streamhub-sdk plugin takes a set of schedule objects and displays them in a horizontal calendar.
+streamhub-schedule displays a schedule of events for a conference of live event. Use StreamHub to aggregate Content about each event so even non-attendees can follow along from home.
 
-## Views:
-The streamhub-schedule provides ```ScheduleView``` which is constructed with an array of event data objects which are
-expected to have the following structure:
+## Getting Started
 
-    event = { pk: "12345", fields: {
-        start_date: "1/30/2013 9:00",
-        end_date: "1/30/2013 12:00",
-        title: "My event",
-        description: "Great event description",
-        sort_order: 12345  // optional
-      }
-    };
+The quickest way to use streamhub-schedule is to use the built version hosted on Livefyre's CDN.
+
+### Dependencies
+
+TODO: UPDATE THIS AFTER GENE MERGES CODE CHANGES AND APP GALLERY CAN BUILD THIS
+
+streamhub-schedule depends on [streamhub-sdk](https://github.com/livefyre/streamhub-sdk). Ensure it's been included in your page.
+
+	<script src="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.min.gz.js"></script>
+
+Include streamhub-schedule too.
+
+	<script src="http://cdn.livefyre.com/libs/apps/genehallman/streamhub-scorecard/v0.0.0-build.20/streamhub-wall.min.js"></script>
+
+### Usage
+
+Require streamhub-sdk and streamhub-schedule
+
+    var Hub = Livefyre.require('streamhub-sdk'),
+        ScheduleView = Livefyre.require('streamhub-schedule');
     
-## To run the example site:
+Create a ScheduleView, passing the following values to the constructor:
 
-    $ git clone git@github.com:genehallman/streamhub-schedule.git
-    $ cd streamhub-schedule
-    $ npm install
-    $ npm start
+* `el`: The DOMElement to render in
+* `start_date`: A Date object of the time to start the schedule
+* `end_date`: A Date object of the time to end the schedule
+* `data`: An Array of objects representing the scheduled events.
 
-+ To see the demo, browse to [localhost:8080](http://localhost:8080)
-+ To run the tests, browse to [localhost:8080/tests/index.html](http://localhost:8080/tests/index.html)
-+ To see the docs, browse to [localhost:8080/docs/index.html](http://localhost:8080/docs/index.html)
+Each event object in the `data` Array should be an object of the form:
+    
+* `pk`: A unique ID for the event
+* `fields`: An object with the following fields
+    * `title`: The Event title
+    * `description`: A description of the event
+    * `article_id`: If you're curating a Collection of Content about the event, the StreamHub Article ID for the collection
+    * `start_date`: The start datetime for the event, as an ISO8601 string
+    * `end_date`: The end datetime for the event, as an ISO8601 string
 
-## To install on your site:
-The easiest way to use the streamhub-schedule is to install it via [bower](http://twitter.github.com/bower/) and [requirejs](http://requirejs.org/):
+Example:
 
-### Install via Bower
-Bower can be used to automatically download streamhub-schedule and its dependency tree.
+    var scheduleView = new ScheduleView({
+        el: document.getElementById('schedule'),
+        data: [{
+            pk: 1001,
+            fields: {
+                start_date: "2013-03-26T12:00:00.00",
+                end_date: "2013-03-26T14:00:00.00",
+                article_id: 2001,
+                title: "My title1",
+                description: "My description1"
+        }},{
+            pk: 1002,
+            fields: {
+                start_date: "2013-03-26T14:00:00.00",
+                end_date: "2013-03-26T16:00:00.00",
+                article_id: 2002,
+                title: "My title2",
+                description: "My description2"
+        }]
+    });
 
-```
-$ bower install git://github.com/genehallman/streamhub-schedule.git
-```
+You now have a schedule! See this all in action on [this jsfiddle](http://jsfiddle.net/59sT9/).
 
-#### Use via Require.js
-Once you've called bower install, you'll have a suite of components available to you in the ```./components``` directory. These can be accessed via Require.js, as shown below.
+## Local Development
 
-    <!-- Get requirejs -->
-    <script src="components/requirejs/require.js" type="text/javascript"></script>
-    <!-- Get Livefyre sdk loader -->
-    <script src="http://zor.t402.livefyre.com/wjs/v3.0.sdk/javascripts/livefyre.js"></script>
-    <script type="text/javascript">
-      require.config({
-        baseUrl: 'components',
-        paths: {
-          jquery: 'jquery/jquery',
-          text: 'requirejs-text/text',
-          backbone: 'backbone/backbone',
-          underscore: 'underscore/underscore',
-          mustache: 'mustache/mustache',
-          isotope: 'isotope/jquery.isotope',
-          fyre: 'http://zor.t402.livefyre.com/wjs/v3.0/javascripts/livefyre',
-        },
-        packages: [ {
-          name: 'streamhub-backbone',
-          location: 'streamhub-backbone'
-        },
-        {
-          name: "streamhub-ticker",
-          location: "streamhub-ticker/src"
-        }],
-        shim: {
-          backbone: {
-              deps: ['underscore', 'jquery'],
-              exports: 'Backbone'
-          },
-          underscore: {
-              exports: '_'
-          },
-          isotope: {
-              deps: ['jquery']
-          },
-          fyre: {
-              exports: 'fyre'
-          },
-        }
-      });
-      // Now to load the example
-      require(['streamhub-backbone', 'streamhub-ticker/views/TickerView'],
-          function(Hub, View) {
-              fyre.conv.load({network: "network.fyre.co"}, [{app: 'sdk'}], function(sdk) {
-              var col = window.col = new Hub.Collection().setRemote({
-                  sdk: sdk,
-                  siteId: "12345",
-                  articleId: "article_1"
-              });
-              
-              var feedCol = window.feedCol = new Hub.Collection();
-              
-              col.on('initialDataLoaded', function() {
-                  feedCol.setRemote({
-                      sdk: sdk,
-                      siteId: "12345",
-                      articleId: "article_2"
-                  });
-              }, this);
-              
-              var view = new View({
-                  collection: col,
-                  el: document.getElementById("example"),
-                  feedCollection:feedCol
-              });
-              view.render();
-          });
-      });
-    </script>
+Instead of using a built version of streamhub-schedule from Livefyre's CDN, you may wish to fork, develop on the repo locally, or include it in your existing JavaScript application.
+
+Clone this repo
+
+    git clone https://github.com/genehallman/streamhub-schedule
+
+Development dependencies are managed by [npm](https://github.com/isaacs/npm), which you should install first.
+
+With npm installed, install streamhub-schedule dependencies. This will also download [Bower](https://github.com/bower/bower) and use it to install browser dependencies.
+
+    cd streamhub-schedule
+    npm install
+
+This repository's package.json includes a helpful script to launch a web server for development
+
+    npm start
+
+You can now visit [http://localhost:8080/](http://localhost:8080/) to see an example schedule loaded via RequireJS.
+
+# StreamHub
+
+[Livefyre StreamHub](http://www.livefyre.com/streamhub/) is used by the world's biggest brands and publishers to power their online Content Communities. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. Want StreamHub? [Contact Livefyre](http://www.livefyre.com/contact/).
