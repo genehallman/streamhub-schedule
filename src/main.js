@@ -1,7 +1,8 @@
 /** @module ScheduleView */
-define(function(require) {
-	var View = require('streamhub-sdk/view');
-	
+define([
+	'streamhub-sdk/view',
+	'streamhub-zepto'
+], function(View, $) {	
 	/**
 	 * ScheduleView creates a schedule from a set of events
 	 * @alias module:ScheduleView
@@ -16,7 +17,6 @@ define(function(require) {
     	View.call(this, opts);
     	this.$el = $(this.el);
         this.$el.addClass(opts.className || "hub-ScheduleView");
-        this.$el.hide();
         this.start_date = opts.start_date;
         this.end_date = opts.end_date;
         this.click = opts.click || null;
