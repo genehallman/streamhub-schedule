@@ -1,7 +1,7 @@
 /** @module ScheduleView */
 define([
 	'streamhub-sdk/view',
-	'streamhub-zepto'
+	'jquery'
 ], function(View, $) {	
 	/**
 	 * ScheduleView creates a schedule from a set of events
